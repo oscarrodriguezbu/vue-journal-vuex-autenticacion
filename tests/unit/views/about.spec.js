@@ -11,4 +11,3 @@ describe('Pruebas en el About View', () => {
     })
 
 })
-

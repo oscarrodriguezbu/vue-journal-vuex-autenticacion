@@ -29,7 +29,7 @@ describe('Pruebas en el FAB compontent', () => {
 
         wrapper.find('button').trigger('click')
 
-        expect(wrapper.emitted('on:click')).toHaveLength(1)
+        expect(wrapper.emitted('on:click')).toHaveLength(1) //emitido que tenga un dato y quiere decir que se ha emitido una vez
 
     })
     

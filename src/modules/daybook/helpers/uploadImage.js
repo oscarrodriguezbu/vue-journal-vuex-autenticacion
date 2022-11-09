@@ -1,28 +1,22 @@
-import axios from 'axios'
+import axios from "axios";
 
+const uploadImage = async (file) => {
+  if (!file) return;
 
-const uploadImage = async ( file ) => {
+  try {
+    const formData = new FormData();
+    formData.append("upload_preset", "curso-vue-journal");
+    formData.append("file", file);
 
-    if ( !file ) return
+    const url = 'https://api.cloudinary.com/v1_1/dgmznkfua/image/upload';
+    const { data } = await axios.post(url, formData);
 
-    try {
-        
-        const formData = new FormData()
-        formData.append('upload_preset','curso-vue')
-        formData.append('file', file )
+    return data.secure_url;
+  } catch (error) {
+    console.error("Error al cargar la imagen, revisar logs");
+    console.log(error);
+    return null;
+  }
+};
 
-        const url = 'https://api.cloudinary.com/v1_1/dx0pryfzn/image/upload'
-        const { data } = await axios.post(url, formData)
-
-        return data.secure_url
-
-    } catch (error) {
-        console.error('Error al cargar la imagen, revisar logs')
-        console.log(error)
-        return null
-    }
-
-
-}
-
-export default uploadImage
+export default uploadImage;
